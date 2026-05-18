@@ -4,14 +4,17 @@
   "private": true,
   "description": "A no-code-first state runtime, live inspector, editor, API server, and React integration toolkit.",
   "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "build": "pnpm -r build",
-    "dev": "pnpm --filter @statish/studio dev",
-    "serve:example": "pnpm --filter @statish/cli dev examples/checkout/chart.json --editable",
-    "typecheck": "pnpm -r typecheck",
-    "test": "pnpm -r test"
+    "build": "npm run build --workspaces --if-present",
+    "dev": "npm run dev --workspace @statish/studio",
+    "serve:example": "npm run dev --workspace @statish/cli -- examples/checkout/chart.json --editable",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
   },
-  "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">=20"
   },
